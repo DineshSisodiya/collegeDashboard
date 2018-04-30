@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Dashboard</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css'>
+  <link rel="stylesheet" href="css/style.css">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/hot-sneaks/jquery-ui.min.css">
+</head>
+
+<body>
+  
+<!-- do not edit -->
+  <input disabled name="chartInit" value="false" readonly type="hidden">
+  <input disabled name="reDrawChart" value="false" readonly type="hidden">
+<!-- do not edit -->
+
+<div class="container-fluid cd-widget-cont">
+  <div class="row widget is-period-cont">
+    <div class="col-sm-6">
+      <span class="cd-title" style="margin-left:-5px;">insights summary</span>
+    </div>
+    <div class="col-sm-6">
+      <div class="is-period">
+        <label>Start : <input placeholder="dd-mm-yyyy" class="is-date" name="from_date"/></label>
+        <label> End : <input placeholder="dd-mm-yyyy" class="is-date" name="to_date"/></label>
+        <input name="dates_submit_btn" class="btn btn-primary" type="button" value="Apply"/>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+ <div class="container-fluid cd-widget-cont">
+   <div class="row widget">
+     <span class="cd-title">Followers insights</span>
+   </div>
+  <div class="row widget fi-cont">
+    <div class="col-sm-3">
+      <h4 id="interest_num"></h4>
+      <h6>Interested</h6>
+    </div>
+    <div class="col-sm-3">
+      <h4 id="ready_num"></h4>
+      <h6>Ready to Engage</h6>
+    </div>
+    <div class="col-sm-3">
+      <h4 id="notReady_num"></h4>
+      <h6>Not yet Ready</h6>
+    </div>
+    <div class="col-sm-3">
+      <h4 id="revoked_num"></h4>
+      <h6>Revoked</h6>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid cd-widget-cont">
+  <table>
+    <tr>
+      <td>
+        <div class="row">
+          <div class="col-sm-6">
+            <select name="fi_type">
+              <option value="0" onclick="updateChart('fi',0)">Interested</option>
+              <option value="1" onclick="updateChart('fi',1)">Ready to Engage</option>
+              <option value="2" onclick="updateChart('fi',2)">Not yet Ready</option>
+              <option value="3" onclick="updateChart('fi',3)">Revoked</option>
+            </select>
+          </div>
+        </div>
+      </td>
+     </tr>
+    <tr>
+      <td>
+        <div class="row">
+          <div class="col-sm-6">
+            <div id="fiLineChart">Fi Line Charts will render here</div>
+          </div>
+          <div class="col-sm-6">
+            <div id="fiPieChart">Fi Pie Charts will render here</div>
+         </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+  
+ <div class="container-fluid cd-widget-cont">
+   <div class="row widget">
+     <span class="cd-title">Engagement insights</span>
+   </div>
+  <div class="row widget fi-cont">
+    <div class="col-sm-4">
+      <h4 id="queries_num"></h4>
+      <h6>Queries</h6>
+    </div>
+    <div class="col-sm-4">
+      <h4 id="bookmarks_num"></h4>
+      <h6>Bookmarks</h6>
+    </div>
+    <div class="col-sm-4">
+      <h4 id="avgRespTime">0 hours</h4>
+      <h6>Average Response time</h6>
+    </div>
+  </div>
+</div> 
+ <div class="container-fluid cd-widget-cont">
+  <table>
+    <tr>
+      <td>
+        <div class="row">
+          <div class="col-sm-6">
+            <select name="ei_type">
+              <option value="0" onclick="updateChart('ei',0)">Queries</option>
+              <option value="1" onclick="updateChart('ei',1)">Bookmarks</option>
+              <option value="2" onclick="updateChart('ei',2)">Average Response time</option>
+            </select>
+          </div>
+        </div>
+      </td>
+     </tr>
+    <tr>
+      <td>
+        <div class="row">
+          <div class="col-sm-6">
+            <div id="eiLineChart">Ei Line Charts will render here</div>
+          </div>
+          <div class="col-sm-6">
+            <div id="eiBarChart">Ei Bar Charts will render here</div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
+
+<!-- fusion charts lib. -->
+  <script src="fusionCharts/js/fusioncharts.js"></script>
+  <script src="fusionCharts/js/fusioncharts.charts.js"></script>
+  <script src="fusionCharts/js/themes/fusioncharts.theme.fint.js"></script>
+  <script src="fusionCharts/js/themes/fusioncharts.theme.carbon.js"></script>
+  <script src="fusionCharts/js/themes/fusioncharts.theme.zune.js"></script>
+  <script src="fusionCharts/js/themes/fusioncharts.theme.ocean.js"></script>
+<!-- easyChartDraw lib. -->
+  <script src="fusionCharts/myjs/easyChartDraw.js"></script>
+
+<!-- main scripts -->
+  <script src="js/main.js"></script>  
+<!-- data input -->
+  <script src="js/chart-input.js"></script>

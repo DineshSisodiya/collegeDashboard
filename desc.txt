@@ -1,0 +1,27 @@
+Followers Insights
+This will enable colleges to check their current positioning among aspirants. Admito is providing
+below parameter to get an overview of “follower’s insights”
+
+Interested: count of active users with status=1.
+Ready to Engage: count of active users with response =1
+Not Yet Ready: count of in-active users with response =0
+Revoked: count of in-active users with status= 0
+
+>Table Used: user_follow_data
+
+-------------------------
+
+Engagements Insights
+This section will help colleges to know engagement among aspirants using below parameters.
+Total queries asked: count of queries asked by students to the college. This can be calculated
+using level3 keywords. You need to map college ID with level3 keywords in your keyword
+Fetcher program.
+
+Total Bookmarked: sum of total bookmarked on asked queries. Can be calculated from feed master table using bookmark and feed_id.
+Average Response time: need to define a process: <leave it for now>
+
+>Table Used: admito_posts, feed_master
+
+SELECT COUNT(f.id) from feed_master f WHERE f.bookmarks=1 AND EXISTS (SELECT k.pid FROM keywords k WHERE f.feed_id=k.pid AND k.clgId='fmsd')
+
+SELECT feed_master.feed_id FROM `feed_master` WHERE feed_master.bookmarks=1 AND EXISTS(SELECT keywords.pid FROM `keywords` WHERE keywords.clgId='fmsd' AND feed_master.feed_id=keywords.pid)

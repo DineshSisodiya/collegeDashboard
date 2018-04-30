@@ -1,0 +1,51 @@
+.cd-widget-cont {
+  background:#eee;
+  padding:10px;
+}
+.widget {
+  background:#fff;
+  margin:0 auto;
+  margin-top:5px;
+  padding:10px;
+}
+ 
+.is-period-cont,.fi-cont {
+  padding:10px 15px;
+}
+.cd-title {
+  text-transform:capitalize;
+  color:#536DFE;
+  font-weight:bold;
+  margin-left:0px;
+}
+.is-period {
+  width:100%;
+}
+.is-period .is-date {
+  width:100px;
+  margin-right:15px;
+  display: inline-block;
+  border-radius:5px;
+  border:1px solid #ccc;
+  padding: 5px;
+  text-indent:3px;
+}
+
+.fi-cont {
+  text-align:center;
+}
+.fi-cont h6{
+  color:#555;
+}
+
+table tr {
+  padding:10px;
+  margin:5px;
+}
+
+#fiLineChart,
+#fiPieChart,
+#eiLineChart,
+#eiBarChart {
+  background: #fff !important;
+}
