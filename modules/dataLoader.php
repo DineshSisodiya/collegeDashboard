@@ -64,11 +64,11 @@ class dataLoader
 		else if($Gtype[0]=='ei') {
 			switch ($Gtype[1]) {
 				case 0:
-					$table=array('`feed_master`','`keywords`');
+					$table=array('`feed_master`','`keyword_master`');
 					// $col=array('name'=>'isClg','value'=>1);
 					break;
 				case 1:
-					$table=array('`feed_master`','`keywords`');
+					$table=array('`feed_master`','`keyword_master`');
 					// $col=array('name'=>'isClg','value'=>1);
 					break;
 				case 2:
@@ -138,14 +138,14 @@ class dataLoader
 		$data['fi']['pieChart']=$pieChart;
 
 		// get ei data
-		$query="SELECT COUNT(fm.id) as count from feed_master fm WHERE fm.bookmarks=1 AND `addedon` BETWEEN '".$param_arr[0]."' AND '".$param_arr[1]."' AND EXISTS (SELECT kw.pid FROM keywords kw WHERE fm.feed_id=kw.pid AND kw.clgId='".$clgId."')";
+		$query="SELECT COUNT(fm.id) as count from feed_master fm WHERE fm.bookmarks=1 AND `addedon` BETWEEN '".$param_arr[0]."' AND '".$param_arr[1]."' AND EXISTS (SELECT kw.pid FROM keyword_master kw WHERE fm.feed_id=kw.pid AND kw.clgId='".$clgId."')";
 
 		$query_exe=$this->con->query($query);
 		$query_res=mysqli_fetch_all($query_exe,MYSQLI_ASSOC);
 
 		$data['ei']['bookmarks']=$query_res[0]['count']==null?0:$query_res[0]['count'];
 
-		$query="SELECT COUNT(fm.id) as count from feed_master fm WHERE `addedon` BETWEEN '".$param_arr[0]."' AND '".$param_arr[1]."' AND EXISTS (SELECT kw.pid FROM keywords kw WHERE kw.isClg=1 AND fm.feed_id=kw.pid AND kw.clgId='".$clgId."')";
+		$query="SELECT COUNT(fm.id) as count from feed_master fm WHERE `addedon` BETWEEN '".$param_arr[0]."' AND '".$param_arr[1]."' AND EXISTS (SELECT kw.pid FROM keyword_master kw WHERE kw.isClg=1 AND fm.feed_id=kw.pid AND kw.clgId='".$clgId."')";
 
 		$query_exe=$this->con->query($query);
 		$query_res=mysqli_fetch_all($query_exe,MYSQLI_ASSOC);

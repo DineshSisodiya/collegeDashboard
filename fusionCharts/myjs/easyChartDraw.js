@@ -92,7 +92,9 @@ function Chart() {
                             '"showYAxisLine" : "'+(options.showYAxisLine==null?"0":options.showYAxisLine)+'",' +
                             '"yAxisLineThickness" : "'+(options.yAxisLineThickness==null?"1":options.yAxisLineThickness)+'",' +
                             '"yAxisLineColor" : "'+(options.yAxisLineColor==null?"#999999":options.yAxisLineColor)+'",' +
-                            '"yAxisLineThickness" : "'+(options.yAxisLineThickness==null?"1":options.yAxisLineColor)+'",';
+                            '"yAxisLineThickness" : "'+(options.yAxisLineThickness==null?"1":options.yAxisLineColor)+'",'+
+                            '"labelStep" : "'+(options.labelStep==null?"1":options.labelStep)+'",';
+            
             }
 
             function alternateGrid() {

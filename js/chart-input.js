@@ -84,15 +84,21 @@
 
 //initialize chart
 var admitoChart = new Chart();
+//to show number of labels to adjust chart
+var labelStep=null;
 
 $("input[name='chartInit']").change(function(){
     /* FI section */
+    var setLength=Math.ceil(dataSet.fi.lineChart.length);
+    labelStep=(setLength>7)?((setLength/7)+1):1;
+    console.log(labelStep);
     var opObjFiLine={
         id:"fiLineChart",
         caption:"Interested",
         subCaption:"users",
         xName:"Days",
-        yName:"Count"
+        yName:"Count",
+        labelStep:labelStep,
     }
     lineChartDrawer(opObjFiLine,dataSet.fi.lineChart);
 
@@ -101,7 +107,7 @@ $("input[name='chartInit']").change(function(){
         caption:"Follower Insight",
         subCaption:"users",
         xName:"Days",
-        yName:"Count"
+        yName:"Count",
     }
     pieChartDrawer(opObjFiPie,dataSet.fi.pieChart);
 
@@ -111,23 +117,29 @@ $("input[name='chartInit']").change(function(){
         caption:"Follower Insight",
         subCaption:"users",
         xName:"Days",
-        yName:"Count"
+        yName:"Count",
+        labelStep:labelStep,
     }
     lineChartDrawer(opObjEiLine,dataSet.ei.lineChart);
+
+
 /* avg response time will be defined later*/
     // var opObjEiBar={
     //     id:"eiBarChart",
     //     caption:"Response Time",
     //     subCaption:"across Admito",
     //     xName:"Days",
-    //     yName:"Count"
+    //     yName:"Count",
+    //     labelStep:labelStep,
     // }
     // barChartDrawer(opObjEiBar,dataSet.ei.barChart);
 /* avg response time will be defined later*/
+
 });
 
 
 $("input[name='reDrawChart']").change(function(){
+
     // console.log(Gtype);
     var opObj=null;
     var caption='';
@@ -154,12 +166,17 @@ $("input[name='reDrawChart']").change(function(){
                console.log('Wrong option passed in Follower Insights');
                break;
         }
+
+        var setLength=Math.ceil(dataSet.length);
+        labelStep=(setLength>7)?((setLength/7)+1):1;
+
         opObj={
             id:"fiLineChart",
             caption:caption,
             subCaption:subCaption,
             xName:"Days",
-            yName:"Count"
+            yName:"Count",
+            labelStep:labelStep,
         }
     }
     else if(Gtype[0]=='ei') {
@@ -180,12 +197,17 @@ $("input[name='reDrawChart']").change(function(){
                 console.log('Wrong option passed in Engagement Insights');
                 break;
         }
+
+        var setLength=Math.ceil(dataSet.length);
+        labelStep=(setLength>7)?((setLength/7)+1):1;
+
         opObj={
             id:"eiLineChart",
             caption:caption,
             subCaption:subCaption,
             xName:"Days",
-            yName:"Count"
+            yName:"Count",
+            labelStep:labelStep,
         }
     }
     lineChartDrawer(opObj,dataSet);
@@ -200,6 +222,7 @@ function lineChartDrawer(opObj,data) {
             "yAxisName":opObj.yName,
             "paletteColors": "#0075c2,#1aaf5d,#f2c500,#f45b00,#8e0000,#1aaf5d,#f45b00",
             "theme": "fint",
+            "labelStep":opObj.labelStep,
     }
     
     admitoChart.drawChart(admitoChart.chartType.line,data,options);
@@ -226,6 +249,7 @@ function barChartDrawer(opObj,data) {
             "yAxisName":opObj.yName,
             "paletteColors": "#0075c2,#1aaf5d,#f2c500,#f45b00,#8e0000,#1aaf5d,#f45b00",
             "theme": "fint",
+            "labelStep":opObj.labelStep,
     }
     admitoChart.drawChart(admitoChart.chartType.column2d,data,options);
 }

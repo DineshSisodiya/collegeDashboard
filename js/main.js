@@ -8,17 +8,21 @@
 	clgId - id of the college 
 */
 	
-	var clgId='fmsdelhi';//null
+	var clgId='fmsdelhi';//provided
 
 	var Gtype = [0,0];
 	var dateFormat = 'dd-mm-yy';
 
-	var date = new Date();
-	var dd=date.getDate();
-	var mm=date.getMonth()+1;
-	var yy=date.getFullYear();
+	var tdate = new Date();
+	var dd=tdate.getDate();
+	var mm=tdate.getMonth()+1;
+	var yy=tdate.getFullYear();
 	var toDate = (dd<10?'0'+dd:dd)+'-'+(mm<10?'0'+mm:mm)+'-'+yy;
-	var fromDate = (dd<10?'0'+dd:dd)+'-'+(mm-1<10?'0'+(mm-1):mm-1)+'-'+yy;
+	var fdate = new Date(tdate.setDate(-30));
+		dd=fdate.getDate();
+		mm=fdate.getMonth()+1;
+		yy=fdate.getFullYear();
+	var fromDate = (dd<10?'0'+dd:dd)+'-'+(mm-1<10?'0'+(mm):mm)+'-'+yy;
 
 	// stop mannual entery of date
 	$("input[name='from_date']").attr("readonly", "readonly");
@@ -121,7 +125,7 @@
  		toDate = $("input[name='to_date']").val();
  		if (fromDate!=''&&toDate!='') {
  			Gtype=[category,sub_category];
- 			// console.log(Gtype);
+ 			console.log(Gtype);
  			fetchData(Gtype,fromDate,toDate,clgId,0);
  		} else {
  			alert('please enter both Start & End date');

@@ -51,7 +51,7 @@ else {
 	$input->from=dateConvert($input->from);
 	$input->to=dateConvert($input->to);
 
-	empty($input->allItems)==true?1:0;
+	empty($input->allItems)==true?1:$input->allItems;
 	
 	if($input->allItems==1) {
 		//fetch both fi & ei data

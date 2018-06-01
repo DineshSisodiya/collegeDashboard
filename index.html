@@ -7,11 +7,11 @@
   <title>College Dashboard</title>
   
   
-  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css'>
+  <link rel='stylesheet prefetch' href='css/bootstrap.css'>
   <link rel="stylesheet" href="css/style.css">
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/hot-sneaks/jquery-ui.min.css">
+  <script src='js/jquery.min.js'></script>
+  <script src='jquery-ui/jquery-ui.min.js'></script>
+  <link rel="stylesheet" type="text/css" href="jquery-ui/jquery-ui.min.css">
 </head>
 
 <body>
@@ -67,11 +67,11 @@
       <td>
         <div class="row">
           <div class="col-sm-6">
-            <select name="fi_type">
-              <option value="0" onclick="updateChart('fi',0)">Interested</option>
-              <option value="1" onclick="updateChart('fi',1)">Ready to Engage</option>
-              <option value="2" onclick="updateChart('fi',2)">Not yet Ready</option>
-              <option value="3" onclick="updateChart('fi',3)">Revoked</option>
+            <select name="fi_type" onchange="if (typeof(this.selectedIndex) != 'undefined') updateChart('fi',this.selectedIndex)">
+              <option value="0">Interested</option>
+              <option value="1">Ready to Engage</option>
+              <option value="2">Not yet Ready</option>
+              <option value="3">Revoked</option>
             </select>
           </div>
         </div>
@@ -117,10 +117,10 @@
       <td>
         <div class="row">
           <div class="col-sm-6">
-            <select name="ei_type">
-              <option value="0" onclick="updateChart('ei',0)">Queries</option>
-              <option value="1" onclick="updateChart('ei',1)">Bookmarks</option>
-              <option value="2" onclick="updateChart('ei',2)">Average Response time</option>
+            <select name="ei_type" onchange="if (typeof(this.selectedIndex) != 'undefined') updateChart('ei',this.selectedIndex)">
+              <option value="0">Queries</option>
+              <option value="1">Bookmarks</option>
+              <option value="2">Average Response time</option>
             </select>
           </div>
         </div>
